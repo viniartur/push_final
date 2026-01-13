@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvieira <vvieira@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vvieira <vvieira@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 13:57:10 by vvieira           #+#    #+#             */
-/*   Updated: 2025/11/01 13:57:12 by vvieira          ###   ########.fr       */
+/*   Updated: 2026/01/13 19:43:18 by vvieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void				rr(t_list **list_a, t_list **list_b);
 void				rra(t_list **list_a);
 void				rrb(t_list **list_b);
 void				rrr(t_list **list_a, t_list **list_b);
+void				free_stack(t_list **stack);
 
 void				sort(t_list **a, t_list **b, int count);
 void				sort_2(t_list **a);
@@ -47,5 +48,6 @@ int					maxnum(t_list **a);
 int					maxindex(t_list **a);
 int					min_pos(t_list **a, int med, int i);
 int					max_pos(t_list **a, int med, int i);
+int					parse_input(int argc, char **argv, t_list **a);
 
 #endif

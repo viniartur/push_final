@@ -3,74 +3,83 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvieira <vvieira@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vvieira <vvieira@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:55:13 by vvieira           #+#    #+#             */
-/*   Updated: 2025/11/14 18:58:38 by vvieira          ###   ########.fr       */
+/*   Updated: 2026/01/13 20:06:10 by vvieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	minnum(t_list **a)
+static void	free_split(char **args)
 {
-	int		min;
-	t_list	*p;
+	int	i;
 
-	min = (*a)->number;
-	p = (*a)->next;
-	while (p != NULL)
-	{
-		if (p->number < min)
-			min = p->number;
-		p = p->next;
-	}
-	return (min);
+	if (!args)
+		return ;
+	i = 0;
+	while (args[i])
+		free(args[i++]);
+	free(args);
 }
 
-int	maxnum(t_list **a)
+static void	cleanup_error(char **args, t_list **a)
 {
-	int		max;
-	t_list	*p;
-
-	max = (*a)->number;
-	p = (*a)->next;
-	while (p != NULL)
-	{
-		if (p->number > max)
-			max = p->number;
-		p = p->next;
-	}
-	return (max);
+	free_split(args);
+	free_stack(a);
+	exit_error();
 }
 
-int	maxindex(t_list **a)
+static int	fill_stack_from_args(char **args, t_list **a)
 {
-	int		max_index;
-	t_list	*p;
+	int		i;
+	int		num;
+	t_list	*new_node;
 
-	p = *a;
-	max_index = p->index;
-	p = p->next;
-	while (p != NULL)
+	i = 0;
+	while (args[i])
 	{
-		if (max_index < p->index)
-			max_index = p->index;
-		p = p->next;
+		num = parse_number(args[i]);
+		new_node = malloc(sizeof(t_list));
+		if (num == -1 || !new_node)
+			cleanup_error(args, a);
+		new_node->number = num;
+		new_node->next = NULL;
+		ft_lst_add_back(a, new_node);
+		i++;
 	}
-	return (max_index);
+	return (i);
 }
 
-int	is_sorted(t_list **a)
+static int	parse_input_split(char *arg, t_list **a)
 {
-	t_list	*tmp;
+	char	**split_args;
+	int		count;
 
-	tmp = *a;
-	while (tmp->next)
+	split_args = ft_split(arg, ' ');
+	if (!split_args || !*split_args)
 	{
-		if (tmp->number > tmp->next->number)
-			return (0);
-		tmp = tmp->next;
+		free_split(split_args);
+		free_stack(a);
+		exit_error();
 	}
-	return (1);
+	count = fill_stack_from_args(split_args, a);
+	free_split(split_args);
+	return (count);
+}
+
+int	parse_input(int argc, char **argv, t_list **a)
+{
+	int	i;
+	int	total_size;
+
+	i = 1;
+	total_size = 0;
+	while (i < argc)
+	{
+		total_size += parse_input_split(argv[i], a);
+		i++;
+	}
+	return (total_size);
 }

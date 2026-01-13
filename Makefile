@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vvieira <vvieira@student.42.fr>            +#+  +:+       +#+         #
+#    By: vvieira <vvieira@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/01 13:57:02 by vvieira           #+#    #+#              #
-#    Updated: 2025/11/01 13:57:04 by vvieira          ###   ########.fr        #
+#    Updated: 2026/01/13 19:24:38 by vvieira          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,13 +53,13 @@ $(LIBFT_A):
 clean:
 	@make -C $(LIBFT_DIR) clean --no-print-directory
 	@rm -f $(OBJS)
-	@echo "$(RED_BOLD)🧼 Push_swap objects removed!$(RESET)"
+	@echo "$(RED_BOLD) Push_swap objects removed!$(RESET)"
 
 fclean:
 	@make -C $(LIBFT_DIR) fclean --no-print-directory
 	@rm -f $(OBJS)
 	@rm -f $(NAME)
-	@echo "$(RED_BOLD)🧼 Push_swap project fully cleaned!$(RESET)"
+	@echo "$(RED_BOLD) Push_swap project fully cleaned!$(RESET)"
 
 re: fclean all
 

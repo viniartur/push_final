@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvieira <vvieira@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vvieira <vvieira@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:55:17 by vvieira           #+#    #+#             */
-/*   Updated: 2025/11/14 18:55:19 by vvieira          ###   ########.fr       */
+/*   Updated: 2026/01/13 20:06:42 by vvieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@ int	parse_number(const char *str)
 	int		i;
 
 	if (!str || *str == '\0')
-		exit_error();
+		return (-1);
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	if (!ft_isdigit(str[i]))
-		exit_error();
+		return (-1);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			exit_error();
+			return (-1);
 		i++;
 	}
 	num = ft_atol(str);
 	if (num < -2147483648 || num > 2147483647)
-		exit_error();
+		return (-1);
 	return ((int)num);
 }
 
@@ -54,7 +54,10 @@ void	check_rep(t_list **a)
 		while (tmp2)
 		{
 			if (tmp1->number == tmp2->number)
+			{
+				free_stack(a);
 				exit_error();
+			}
 			tmp2 = tmp2->next;
 		}
 		tmp1 = tmp1->next;
