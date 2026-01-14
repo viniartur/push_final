@@ -6,7 +6,7 @@
 /*   By: vvieira <vvieira@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:55:13 by vvieira           #+#    #+#             */
-/*   Updated: 2026/01/13 23:14:18 by vvieira          ###   ########.fr       */
+/*   Updated: 2026/01/14 10:30:32 by vvieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	cleanup_error(char **args, t_list **a, t_list *new_node)
 	{
 		free(new_node);
 	}
-	
 	free_split(args);
 	free_stack(a);
 	exit_error();
