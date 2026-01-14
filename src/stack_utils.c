@@ -6,7 +6,7 @@
 /*   By: vvieira <vvieira@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:55:13 by vvieira           #+#    #+#             */
-/*   Updated: 2026/01/13 21:50:05 by vvieira          ###   ########.fr       */
+/*   Updated: 2026/01/13 23:14:18 by vvieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@ static void	free_split(char **args)
 	free(args);
 }
 
-static void	cleanup_error(char **args, t_list **a)
+static void	cleanup_error(char **args, t_list **a, t_list *new_node)
 {
+	if (new_node)
+	{
+		free(new_node);
+	}
+	
 	free_split(args);
 	free_stack(a);
 	exit_error();
@@ -43,7 +48,7 @@ static int	fill_stack_from_args(char **args, t_list **a)
 		num = parse_number(args[i]);
 		new_node = malloc(sizeof(t_list));
 		if (!num || !new_node)
-			cleanup_error(args, a);
+			cleanup_error(args, a, new_node);
 		new_node->number = *num;
 		free(num);
 		new_node->next = NULL;
