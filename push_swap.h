@@ -6,7 +6,7 @@
 /*   By: vvieira <vvieira@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 13:57:10 by vvieira           #+#    #+#             */
-/*   Updated: 2026/01/13 19:43:18 by vvieira          ###   ########.fr       */
+/*   Updated: 2026/01/13 21:36:54 by vvieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int					parse_number(const char *str);
+int					*parse_number(const char *str);
 void				check_rep(t_list **a);
 
 void				sa(t_list **list_a);

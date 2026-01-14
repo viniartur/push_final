@@ -6,7 +6,7 @@
 /*   By: vvieira <vvieira@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:55:17 by vvieira           #+#    #+#             */
-/*   Updated: 2026/01/13 20:06:42 by vvieira          ###   ########.fr       */
+/*   Updated: 2026/01/13 21:36:29 by vvieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,31 @@ void	exit_error(void)
 	exit(1);
 }
 
-int	parse_number(const char *str)
+int	*parse_number(const char *str)
 {
 	long	num;
+	int		*result;
 	int		i;
 
 	if (!str || *str == '\0')
-		return (-1);
+		return (NULL);
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	if (!ft_isdigit(str[i]))
-		return (-1);
+		return (NULL);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (-1);
+			return (NULL);
 		i++;
 	}
 	num = ft_atol(str);
 	if (num < -2147483648 || num > 2147483647)
-		return (-1);
-	return ((int)num);
+		return (NULL);
+	result = malloc(sizeof(int));
+	*result = ((int)num);
+	return (result);
 }
 
 void	check_rep(t_list **a)

@@ -6,7 +6,7 @@
 #    By: vvieira <vvieira@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/01 13:57:02 by vvieira           #+#    #+#              #
-#    Updated: 2026/01/13 19:24:38 by vvieira          ###   ########.fr        #
+#    Updated: 2026/01/13 21:15:29 by vvieira          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RED_BOLD	= \033[1;31m
 NAME        = push_swap
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra -Werror -g3
 
 LIBFT_DIR   = ./libft
 LIBFT_A     = $(LIBFT_DIR)/libft.a

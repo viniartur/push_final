@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vvieira <vvieira@student.42.fr>            +#+  +:+       +#+         #
+#    By: vvieira <vvieira@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/01 13:56:52 by vvieira           #+#    #+#              #
-#    Updated: 2025/11/01 13:56:54 by vvieira          ###   ########.fr        #
+#    Updated: 2026/01/13 21:15:39 by vvieira          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RED_BOLD	= \033[1;31m
 NAME = libft.a
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 RM = rm -f
 AR = ar rcs
 

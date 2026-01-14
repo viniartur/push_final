@@ -6,7 +6,7 @@
 /*   By: vvieira <vvieira@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:55:13 by vvieira           #+#    #+#             */
-/*   Updated: 2026/01/13 20:06:10 by vvieira          ###   ########.fr       */
+/*   Updated: 2026/01/13 21:50:05 by vvieira          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	cleanup_error(char **args, t_list **a)
 static int	fill_stack_from_args(char **args, t_list **a)
 {
 	int		i;
-	int		num;
+	int		*num;
 	t_list	*new_node;
 
 	i = 0;
@@ -42,9 +42,10 @@ static int	fill_stack_from_args(char **args, t_list **a)
 	{
 		num = parse_number(args[i]);
 		new_node = malloc(sizeof(t_list));
-		if (num == -1 || !new_node)
+		if (!num || !new_node)
 			cleanup_error(args, a);
-		new_node->number = num;
+		new_node->number = *num;
+		free(num);
 		new_node->next = NULL;
 		ft_lst_add_back(a, new_node);
 		i++;
